@@ -1,4 +1,4 @@
-var Hello = require('./hello')
+var Hello = require('../hello')
 hello = new Hello()
 hello.setName('xls')
 hello.sayName()

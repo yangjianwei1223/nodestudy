@@ -1,5 +1,19 @@
-function route(pathname) {
-    console.log('About to router a request for ' + pathname)
-}
+// function route(pathname) {
+//     console.log('About to router a request for ' + pathname)
+// }
 
-exports.route = route;
+// exports.route = route;
+
+const router = require('koa-router')()
+const HomeController = require('./controller/home')
+
+module.exports = (app) => {
+    router.get('/', HomeController.index)
+    router.get('/home', HomeController.home)
+    router.get('/home/:id/:name', HomeController.homeParams)
+    router.get('/user', HomeController.login)
+    router.post('/user/register', HomeController.register)
+
+    app.use(router.routes())
+        .use(router.allowedMethods())
+}
